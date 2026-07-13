@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Брифинг администрации KL|NoRules</title>
+    <style>
+        /* ===== БАЗА ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #0c071a;
+            color: #e4ddf5;
+            line-height: 1.6;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== НАВИГАЦИЯ ===== */
+        .nav-bar {
+            background: #150f2b;
+            border: 1px solid #3a2a6b;
+            border-radius: 8px;
+            padding: 0.6rem 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.3rem 1.2rem;
+        }
+
+        .nav-bar a {
+            color: #a78bcb;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        .nav-bar a:hover {
+            color: #c084fc;
+            background: #1f1340;
+        }
+
+        /* ===== ШАПКА ===== */
+        .header {
+            text-align: center;
+            padding: 1.5rem 0 1rem;
+            border-bottom: 2px solid #3a2a6b;
+            margin-bottom: 1.5rem;
+        }
+
+        .header .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #c084fc;
+            letter-spacing: 1px;
+        }
+
+        .header .sub {
+            font-size: 1rem;
+            color: #7c6ca0;
+        }
+
+        /* ===== РАЗДЕЛЫ ===== */
+        .section {
+            background: #110b24;
+            border: 1px solid #2a1a5a;
+            border-radius: 10px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #c084fc;
+            border-bottom: 2px solid #3a2a6b;
+            padding-bottom: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .group-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #b7a7d5;
+            margin: 1.5rem 0 0.6rem 0;
+            padding: 0.3rem 0.8rem;
+            background: #1a1235;
+            border-radius: 6px;
+            border-left: 4px solid #7c3aed;
+            display: inline-block;
+        }
+
+        .group-sub {
+            color: #8a7aaa;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .group-divider {
+            border: none;
+            border-top: 1px solid #2a1a5a;
+            margin: 0.3rem 0 1rem 0;
+        }
+
+        .info-box {
+            background: #0a0618;
+            border-radius: 8px;
+            padding: 0.8rem 1.2rem;
+            border-left: 4px solid #7c3aed;
+            margin: 0.6rem 0;
+            color: #b7a7d5;
+        }
+
+        .info-box strong {
+            color: #c084fc;
+        }
+
+        /* ===== КАРТОЧКИ РАНГОВ ===== */
+        .rank-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        .rank-card {
+            background: #1a1235;
+            border-radius: 8px;
+            padding: 1.2rem 1.3rem;
+            border: 1px solid #3a2a6b;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rank-card .rank-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ede6ff;
+        }
+
+        .rank-card ul {
+            list-style: none;
+            padding: 0;
+            flex-grow: 1;
+        }
+
+        .rank-card li {
+            padding: 0.15rem 0 0.15rem 1.4rem;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="%23a855f7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') left center no-repeat;
+            background-size: 0.8rem;
+            font-size: 0.9rem;
+            color: #d0c4ea;
+        }
+
+        .rank-card .restriction {
+            color: #f0b07c;
+            font-size: 0.85rem;
+            border-top: 1px solid #2a1a5a;
+            padding-top: 0.5rem;
+            margin-top: 0.4rem;
+        }
+
+        .rank-card .promote {
+            background: #1f1442;
+            border-radius: 6px;
+            padding: 0.4rem 0.8rem;
+            margin-top: 0.6rem;
+            font-size: 0.8rem;
+            border-left: 3px solid #a855f7;
+            color: #b7a7d5;
+        }
+
+        /* ===== ПРАВИЛА ===== */
+        .rule-item {
+            background: #1a1235;
+            border-radius: 8px;
+            padding: 0.7rem 1.2rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #3a2a6b;
+            border-left: 3px solid #4a3080;
+            transition: border-color 0.2s;
+        }
+
+        .rule-item:hover {
+            border-left-color: #7c3aed;
+        }
+
+        .rule-item .rule-header {
+            display: flex;
+            align-items: baseline;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+        }
+
+        .rule-item .rule-num {
+            color: #7c3aed;
+            font-weight: 700;
+            font-size: 0.9rem;
+            min-width: 32px;
+        }
+
+        .rule-item .rule-text {
+            color: #ddd0f5;
+            font-size: 0.92rem;
+        }
+
+        .rule-item .rule-punish {
+            display: inline-block;
+            background: #2a1a5a;
+            color: #f0b07c;
+            padding: 0.05rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            border: 1px solid #4a3080;
+        }
+
+        .rule-item .rule-note {
+            color: #8a7aaa;
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+            padding: 0.2rem 0.6rem;
+            background: #0a0618;
+            border-radius: 4px;
+            border-left: 2px solid #5a3aaa;
+        }
+
+        .rule-item .rule-link {
+            color: #a855f7;
+            font-size: 0.85rem;
+            word-break: break-all;
+            margin-top: 0.15rem;
+            display: block;
+        }
+
+        /* ===== ПРЕДУПРЕЖДЕНИЯ ===== */
+        .warning-system {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .warning-item {
+            background: #1a1235;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            border: 1px solid #3a2a6b;
+            color: #d0c4ea;
+            font-size: 0.85rem;
+            flex: 1 1 auto;
+            min-width: 200px;
+        }
+
+        .warning-item .num {
+            color: #f0b07c;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .warning-item .label {
+            color: #8a7aaa;
+        }
+
+        /* ===== СНЯТИЕ ПРЕДУПРЕЖДЕНИЙ ===== */
+        .removal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .removal-card {
+            background: #1a1235;
+            border-radius: 8px;
+            padding: 1rem 1.3rem;
+            border: 1px solid #3a2a6b;
+            text-align: center;
+        }
+
+        .removal-card .icon {
+            font-size: 1.8rem;
+        }
+
+        .removal-card .title {
+            color: #c084fc;
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 0.3rem 0;
+        }
+
+        .removal-card .desc {
+            color: #a78bcb;
+            font-size: 0.85rem;
+        }
+
+        /* ===== НОРМЫ АКТИВА ===== */
+        .norms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
+            margin: 0.5rem 0;
+        }
+
+        .norms-grid .norm-item {
+            background: #1a1235;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #3a2a6b;
+            text-align: center;
+        }
+
+        .norms-grid .norm-item .rank {
+            color: #c084fc;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .norms-grid .norm-item .hours {
+            color: #f0b07c;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 0.2rem 0;
+        }
+
+        .norms-grid .norm-item .period {
+            color: #8a7aaa;
+            font-size: 0.8rem;
+        }
+
+        /* ===== ЛИМИТЫ ===== */
+        .limits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.8rem;
+            margin: 0.5rem 0;
+        }
+
+        .limits-grid .limit-item {
+            background: #1a1235;
+            padding: 0.6rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #3a2a6b;
+        }
+
+        .limits-grid .limit-item .num {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #c084fc;
+        }
+
+        .limits-grid .limit-item .label {
+            color: #a78bcb;
+            font-size: 0.85rem;
+        }
+
+        /* ===== АЛГОРИТМ ===== */
+        .step {
+            background: #1a1235;
+            padding: 0.6rem 1.2rem 0.6rem 2.8rem;
+            margin-bottom: 0.4rem;
+            border-radius: 20px;
+            position: relative;
+            border: 1px solid #3a2a6b;
+            font-size: 0.9rem;
+            color: #d0c4ea;
+        }
+
+        .step .num {
+            position: absolute;
+            left: 0.6rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #7c3aed;
+            color: #fff;
+            font-weight: 700;
+            width: 1.8rem;
+            height: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.75rem;
+        }
+
+        .step .highlight {
+            color: #f5d78a;
+            font-weight: 600;
+        }
+
+        /* ===== МИНИ-ИВЕНТЫ ===== */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .event-card {
+            background: #1a1235;
+            border-radius: 8px;
+            padding: 1.2rem 1.3rem;
+            border: 1px solid #3a2a6b;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card .event-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #c084fc;
+        }
+
+        .event-card .event-desc {
+            color: #d0c4ea;
+            font-size: 0.92rem;
+            flex-grow: 1;
+        }
+
+        .event-card .event-desc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.3rem 0;
+        }
+
+        .event-card .event-desc li {
+            padding: 0.1rem 0 0.1rem 1.4rem;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="%23a855f7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') left center no-repeat;
+            background-size: 0.8rem;
+            font-size: 0.9rem;
+            color: #d0c4ea;
+        }
+
+        .event-card .event-note {
+            color: #f0b07c;
+            font-size: 0.85rem;
+            border-top: 1px solid #2a1a5a;
+            padding-top: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .event-card .event-note strong {
+            color: #f0b07c;
+        }
+
+        .event-card .event-badge {
+            display: inline-block;
+            background: #2a1a5a;
+            color: #f0b07c;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.1rem 0.7rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            align-self: flex-start;
+            margin-bottom: 0.4rem;
+            border: 1px solid #4a3080;
+        }
+
+        .event-card .event-badge.required {
+            background: #4a1a1a;
+            border-color: #7a3a3a;
+            color: #f0b07c;
+        }
+
+        /* ===== ДОНАТ ===== */
+        .donate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .donate-card {
+            background: #1a1235;
+            border-radius: 8px;
+            padding: 1.2rem 1.3rem;
+            border: 1px solid #3a2a6b;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .donate-card .donate-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #c084fc;
+        }
+
+        .donate-card .donate-badge {
+            display: inline-block;
+            background: #2a1a5a;
+            color: #f0b07c;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.1rem 0.7rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            align-self: flex-start;
+            margin-bottom: 0.4rem;
+            border: 1px solid #4a3080;
+        }
+
+        .donate-card .donate-features {
+            color: #d0c4ea;
+            font-size: 0.92rem;
+            flex-grow: 1;
+        }
+
+        .donate-card .donate-features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.3rem 0;
+        }
+
+        .donate-card .donate-features li {
+            padding: 0.1rem 0 0.1rem 1.4rem;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="%23a855f7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') left center no-repeat;
+            background-size: 0.8rem;
+            font-size: 0.9rem;
+            color: #d0c4ea;
+        }
+
+        .donate-card .donate-prices {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #2a1a5a;
+            flex-wrap: wrap;
+        }
+
+        .donate-card .donate-prices .price-item {
+            background: #0a0618;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #f0b07c;
+            border: 1px solid #3a2a6b;
+        }
+
+        .donate-card .donate-prices .price-item .period {
+            color: #8a7aaa;
+        }
+
+        .donate-card .donate-note {
+            color: #8a7aaa;
+            font-size: 0.8rem;
+            margin-top: 0.4rem;
+            font-style: italic;
+        }
+
+        /* ===== ПРАВИЛА ДОНАТА ===== */
+        .rules-donate-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin: 0.5rem 0;
+        }
+
+        .rules-donate-item {
+            background: #1a1235;
+            border-radius: 8px;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #3a2a6b;
+            border-left: 3px solid #4a3080;
+        }
+
+        .rules-donate-item .rule-num {
+            color: #7c3aed;
+            font-weight: 700;
+        }
+
+        .rules-donate-item .rule-text {
+            color: #d0c4ea;
+            font-size: 0.9rem;
+        }
+
+        .rules-donate-item .rule-sub {
+            color: #8a7aaa;
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+            padding-left: 1.2rem;
+        }
+
+        /* ===== ПРЕФИКС ===== */
+        .prefix-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin: 0.5rem 0;
+        }
+
+        .prefix-item {
+            background: #1a1235;
+            border-radius: 8px;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #3a2a6b;
+            text-align: center;
+        }
+
+        .prefix-item .prefix-name {
+            color: #c084fc;
+            font-weight: 600;
+        }
+
+        .prefix-item .prefix-price {
+            color: #f0b07c;
+            font-size: 0.9rem;
+        }
+
+        .discord-link {
+            display: inline-block;
+            background: #7c3aed;
+            color: #fff;
+            padding: 0.6rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: background 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .discord-link:hover {
+            background: #6a2fd4;
+        }
+
+        /* ===== ПОДВАЛ ===== */
+        .footer {
+            text-align: center;
+            padding: 1.5rem 0 0.5rem;
+            border-top: 1px solid #2a1a5a;
+            margin-top: 1.5rem;
+            color: #5a4a7a;
+            font-size: 0.8rem;
+        }
+
+        .footer a {
+            color: #7c3aed;
+            text-decoration: none;
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 768px) {
+            .section {
+                padding: 1rem 1.2rem;
+            }
+            .nav-bar {
+                padding: 0.4rem 0.8rem;
+                gap: 0.2rem 0.8rem;
+            }
+            .nav-bar a {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.4rem;
+            }
+            .header .logo {
+                font-size: 1.6rem;
+            }
+            .rank-grid {
+                grid-template-columns: 1fr;
+            }
+            .warning-item {
+                min-width: 100%;
+            }
+            .removal-grid {
+                grid-template-columns: 1fr;
+            }
+            .step {
+                padding: 0.6rem 1rem 0.6rem 2.5rem;
+                font-size: 0.85rem;
+            }
+            .step .num {
+                width: 1.5rem;
+                height: 1.5rem;
+                font-size: 0.65rem;
+                left: 0.5rem;
+            }
+            .event-grid {
+                grid-template-columns: 1fr;
+            }
+            .donate-grid {
+                grid-template-columns: 1fr;
+            }
+            .rules-donate-grid {
+                grid-template-columns: 1fr;
+            }
+            .prefix-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ===== НАВИГАЦИЯ ===== -->
+    <div class="nav-bar" id="top">
+        <a href="#ranks">Ранги</a>
+        <a href="#punishments">Наказания</a>
+        <a href="#foradmins">Для администрации</a>
+        <a href="#rules">Правила</a>
+        <a href="#events">Ивенты</a>
+        <a href="#donate">Донат</a>
+        <a href="#staff">Состав</a>
+    </div>
+
+    <!-- ===== ШАПКА ===== -->
+    <div class="header">
+        <div class="logo">Брифинг администрации KL|NoRules</div>
+        <div class="sub">Система рангов и наказаний</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== РАЗДЕЛ 1: РАНГИ ===== -->
+    <!-- ============================================================ -->
+    <div class="section" id="ranks">
+        <div class="section-title">Система рангов и повышений</div>
+
+        <div class="group-title">Основной состав</div>
+        <div class="group-sub">От Стажёра до Эксперт-администратора</div>
+        <hr class="group-divider">
+
+        <div class="rank-grid">
+            <div class="rank-card">
+                <div class="rank-name">Стажёр</div>
+                <ul>
+                    <li>Слежка за сервером</li>
+                    <li>Разбор жалоб</li>
+                    <li>Прохождение стажировки</li>
+                </ul>
+                <div class="restriction"><strong>Ограничения:</strong> бан до 1 ч, мини-ивенты, запрет на наказание администрации</div>
+                <div class="promote">▶ пройти собеседование · без взысканий · пройти стажировку</div>
+            </div>
+
+            <div class="rank-card">
+                <div class="rank-name">Младший администратор</div>
+                <ul>
+                    <li>Слежка за сервером</li>
+                    <li>Разбор жалоб</li>
+                </ul>
+                <div class="restriction"><strong>Ограничения:</strong> бан до 12 ч, мини-ивенты, запрет на наказание администрации</div>
+                <div class="promote">▶ 14 дней · без взысканий</div>
+            </div>
+
+            <div class="rank-card">
+                <div class="rank-name">Администратор</div>
+                <ul>
+                    <li>Слежка за сервером</li>
+                    <li>Разбор жалоб</li>
+                    <li>Помощь основному составу</li>
+                </ul>
+                <div class="restriction"><strong>Ограничения:</strong> бан до 50 лет, мини-ивенты (с разрешения), запрет на наказание администрации</div>
+                <div class="promote">▶ 35 дней · без взысканий · рекомендация куратора</div>
+            </div>
+
+            <div class="rank-card">
+                <div class="rank-name">Старший администратор</div>
+                <ul>
+                    <li>Слежка за сервером</li>
+                    <li>Разбор жалоб</li>
+                    <li>Помощь основному составу</li>
+                </ul>
+                <div class="restriction"><strong>Ограничения:</strong> бан до 50 лет, мини-ивенты (с разрешения), наказание администрации только по просьбе куратора</div>
+                <div class="promote">▶ 70 дней · без взысканий · рекомендация руководства</div>
+            </div>
+
+            <div class="rank-card">
+                <div class="rank-name">Эксперт-администратор</div>
+                <ul>
+                    <li>Слежка за сервером</li>
+                    <li>Разбор жалоб</li>
+                    <li>Помощь составу</li>
+                    <li>Аудит действий администраторов</li>
+                </ul>
+                <div class="restriction"><strong>Ограничения:</strong> бан до 50 лет, мини-ивенты (с разрешения), наказание администрации с согласия куратора</div>
+                <div class="promote">▶ 100 дней · без взысканий · одобрение руководства</div>
+            </div>
+        </div>
+
+        <div class="group-title">Специальный состав</div>
+        <div class="group-sub">Контроль администрации</div>
+        <hr class="group-divider">
+
+        <div class="rank-grid">
+            <div class="rank-card">
+                <div class="rank-name">Помощник К.А.</div>
+                <ul>
+                    <li>Мониторинг работы администраторов</li>
+                    <li>Сбор отчётов о нарушениях</li>
+                </ul>
+                <div class="restriction"><strong>Ограничения:</strong> бан до 50 лет, мини-ивенты (с разрешения), наказание администрации только по решению контроля</div>
+                <div class="promote">▶ Более 100 дней · без взысканий · рекомендация контроля</div>
+            </div>
+
+            <div class="rank-card">
+                <div class="rank-name">К.А.</div>
+                <ul>
+                    <li>Мониторинг работы администраторов</li>
+                    <li>Принятие решений по спорным ситуациям</li>
+                    <li>Управление системой предупреждений</li>
+                </ul>
+                <div class="restriction"><strong>Ограничения:</strong> бан до 50 лет, мини-ивенты (с разрешения), может наказывать администрацию без ограничений</div>
+                <div class="promote">▶ Назначается руководством · без взысканий</div>
+            </div>
+        </div>
+
+        <div class="group-title">Высший
+        состав</div>
+        <div class="group-sub">Куратор и выше</div>
+        <hr class="group-divider">
+
+        <div class="rank-grid">
+            <div class="rank-card">
+                <div class="rank-name">Куратор</div>
+                <ul>
+                    <li>Наставничество над составом</li>
+                    <li>Выдача отработок</li>
+                    <li>Рекомендации к повышению</li>
+                    <li>Слежка за таблицей</li>
+                </ul>
+                <div class="restriction"><strong>Ограничения:</strong> полный доступ к системе предупреждений, может снимать предупреждения</div>
+                <div class="promote">▶ Назначается руководством</div>
+            </div>
+
+            <div class="rank-card">
+                <div class="rank-name">Руководство</div>
+                <ul>
+                    <li>Внесение изменений в правила</li>
+                    <li>Высшая инстанция по всем вопросам</li>
+                </ul>
+                <div class="restriction"><strong>Ограничения:</strong> отсутствуют. Высшая власть в проекте.</div>
+                <div class="promote">▶ Назначается главой сервера</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== РАЗДЕЛ 2: СИСТЕМА НАКАЗАНИЙ ===== -->
+    <!-- ============================================================ -->
+    <div class="section" id="punishments">
+        <div class="section-title">Система наказаний</div>
+
+        <div class="group-title">▸ Предупреждения</div>
+
+        <div class="warning-system">
+            <div class="warning-item">
+                <span class="num">1</span> предупреждение<br>
+                <span class="label">Запрет на повышение</span>
+            </div>
+            <div class="warning-item">
+                <span class="num">2</span> предупреждения<br>
+                <span class="label">Запрет на повышение + Запрет на мини-ивенты</span>
+            </div>
+            <div class="warning-item">
+                <span class="num">3</span> предупреждения<br>
+                <span class="label">Снятие с должности</span>
+            </div>
+        </div>
+
+        <div style="color: #8a7aaa; font-size: 0.9rem;">Предупреждение выдаётся за нарушение правил администрации NoRules.</div>
+
+        <div class="group-title">▸ Снятие предупреждений</div>
+
+        <div class="removal-grid">
+            <div class="removal-card">
+                <div class="icon">📝</div>
+                <div class="title">Отработка у куратора</div>
+                <div class="desc">Получите задание от куратора и выполните его</div>
+            </div>
+            <div class="removal-card">
+                <div class="icon">⏳</div>
+                <div class="title">10 дней активности</div>
+                <div class="desc">Будьте активны на сервере в течение 10 дней без нарушений</div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <strong>Для отработки предупреждения обратитесь к куратору.</strong>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== РАЗДЕЛ 3: ДЛЯ АДМИНИСТРАЦИИ ===== -->
+    <!-- ============================================================ -->
+    <div class="section" id="foradmins">
+        <div class="section-title">Для администрации</div>
+
+        <div class="group-title">▸ Нормы активности</div>
+
+        <div class="norms-grid">
+            <div class="norm-item">
+                <div class="rank">От стажёра до администратора</div>
+                <div class="hours">10 часов</div>
+                <div class="period">в неделю</div>
+            </div>
+            <div class="norm-item">
+                <div class="rank">От старшего администратора до К.А.</div>
+                <div class="hours">16 часов</div>
+                <div class="period">в неделю</div>
+            </div>
+            <div class="norm-item">
+                <div class="rank">Высшая администрация</div>
+                <div class="hours">отсутствуют</div>
+            </div>
+        </div>
+
+        <div style="color: #f0b07c; font-size: 0.85rem;">При невыполнении — предупреждение за неактивность.</div>
+
+        <div class="group-title">▸ Лимиты состава</div>
+
+        <div class="limits-grid">
+            <div class="limit-item">
+                <div class="num">10</div>
+                <div class="label">Администраторов</div>
+            </div>
+            <div class="limit-item">
+                <div class="num">7</div>
+                <div class="label">Старших администраторов</div>
+            </div>
+            <div class="limit-item">
+                <div class="num">4</div>
+                <div class="label">Эксперт-администраторов</div>
+            </div>
+        </div>
+
+        <div style="color: #8a7aaa; font-size: 0.85rem;">Стажёры не учитываются в лимите.</div>
+
+        <div class="group-title">▸ Алгоритм проведения разборок</div>
+
+        <div class="step">
+            <span class="num">1</span>
+            Подана жалоба — берём игрока и телепортируем в башню.
+        </div>
+        <div class="step">
+            <span class="num">2</span>
+            Проводим жалобу, выносим финальный вердикт. Если стороны не пришли к единому решению — запрашиваем доказательства.
+        </div>
+        <div class="step">
+            <span class="num">3</span>
+            Если игрок признал вину — это доказательство! <span class="highlight">Запишите демку на его признание.</span>
+        </div>
+        <div class="step">
+            <span class="num">4</span>
+            Наказываем игрока либо возвращаем роль. При 100% доказанном нарушении — забирать из игры <span class="highlight">МОЖНО</span>.
+        </div>
+        <div class="step">
+            <span class="num">5</span>
+            При лёгком нарушении — предупреждение или минимальный бан, не наказывайте на максимальный срок.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== РАЗДЕЛ 4: ПРАВИЛА АДМИНИСТРАЦИИ ===== -->
+    <!-- ============================================================ -->
+    <div class="section" id="rules">
+        <div class="section-title">Правила администрации NoRules</div>
+
+        <div class="info-box">
+            Все правила обязательны к исполнению. Нарушение влечёт за собой наказание согласно системе предупреждений.
+        </div>
+
+        <div class="group-title">▸ Злоупотребление полномочиями и помехи игре</div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">1.</span>
+                <span class="rule-text">Запрещён админ-абуз (злоупотребление админ-правами).</span>
+            </div>
+            <div class="rule-punish">Наказание: от 1 предупреждения до снятия</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">2.</span>
+                <span class="rule-text">Запрещено мешать игровому процессу игроков при помощи RA/Админ-панели.</span>
+            </div>
+            <div class="rule-punish">Наказание: от 2-х предупреждений до снятия</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">3.</span>
+                <span class="rule-text">Запрещено находиться в администраторской башне без веской причины.</span>
+            </div>
+            <div class="rule-punish">Наказание: 1 предупреждение</div>
+        </div>
+
+        <div class="group-title">▸ Профессиональная этика и общение</div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">4.</span>
+                <span class="rule-text">Запрещено оскорблять игроков.</span>
+            </div>
+            <div class="rule-punish">Наказание: от 1 до 2 предупреждений</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">5.</span>
+                <span class="rule-text">Вы обязаны помогать игрокам в спорных ситуациях и отвечать на вопросы.</span>
+            </div>
+            <div class="rule-punish">Наказание: 1 предупреждение</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">6.</span>
+                <span class="rule-text">Вы обязаны объяснить игроку, какое правило он нарушил.</span>
+            </div>
+            <div class="rule-punish">Наказание: 1 предупреждение</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">7.</span>
+                <span class="rule-text">Запрещено игнорировать жалобы игроков.</span>
+            </div>
+            <div class="rule-note">Примечание: даже без доказательств вы обязаны рассмотреть жалобу. Регулярно проверяйте админ-чат.</div>
+            <div class="rule-punish">Наказание: 1 предупреждение</div>
+        </div>
+
+        <div class="group-title">▸ Вынесение наказаний и работа с жалобами</div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">8.</span>
+                <span class="rule-text">Разбор жалобы можно начинать только при присутствии обоих сторон конфликта.</span>
+            </div>
+            <div class="rule-note">Примечание: если игрок жив, вы не можете принудительно изъять его из игры для разбора.</div>
+            <div class="rule-punish">Наказание: 1 предупреждение</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">9.</span>
+                <span class="rule-text">Запрещено банить, кикать, мутить игрока без причины и доказательств.</span>
+            </div>
+            <div class="rule-punish">Наказание: от 2-х предупреждений до снятия</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">9.1.</span>
+                <span class="rule-text">Вы можете выдать наказание, если вы или другой администратор стали прямыми свидетелями нарушения.</span>
+            </div>
+            <div class="rule-note">Примечание: доказательства — запись (демонстрация экрана), скриншот, логи. При апелляции вы обязаны их предоставить.</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">10.</span>
+                <span class="rule-text">Вы обязаны в причине бана указывать пункт правил, который был нарушен.</span>
+            </div>
+            <div class="rule-note">Примечание: если ваш ник в игре на русском, также укажите в причине, кто выдал бан.</div>
+            <div class="rule-punish">Наказание: 1 предупреждение</div>
+        </div>
+
+        <div class="group-title">▸ Обязанности и активность</div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">11.</span>
+                <span class="rule-text">Ваша норма активности — 5 часов в течение любых 3 дней.</span>
+            </div>
+            <div class="rule-punish">Наказание: 1 предупреждение за каждую пропущенную норму</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">12.</span>
+                <span class="rule-text">Запрещено нарушать основные игровые правила сервера NoRules.</span>
+            </div>
+            <div class="rule-punish">Наказание: 1 предупреждение</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">13.</span>
+                <span class="rule-text">Запрещена излишняя нагрузка сервера с помощью админ-инструментов.</span>
+            </div>
+            <div class="rule-punish">Наказание: от 2-х предупреждений до снятия</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">14.</span>
+                <span class="rule-text">Вы должны сообщать о нарушениях других администраторов в специальный канал Discord.</span>
+            </div>
+            <div class="rule-link">https://discord.com/channels/952471099818516540/1313756447338790924</div>
+            <div class="rule-punish">Наказание: 1 предупреждение</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">15.</span>
+                <span class="rule-text">Запрещено наказывать администрацию, если вы выше по должности, без согласования с руководством.</span>
+            </div>
+            <div class="rule-punish">Наказание: 1 предупреждение</div>
+        </div>
+
+        <div class="group-title">▸ Мероприятия и идентификация</div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">16.</span>
+                <span class="rule-text">Запрещено проводить мини-ивенты без соответствующего доступа к ним.</span>
+            </div>
+            <div class="rule-punish">Наказание: 1-2 предупреждения</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">17.</span>
+                <span class="rule-text">Запрещено проводить мини-ивенты, которых нет в официальном списке разрешённых.</span>
+            </div>
+            <div class="rule-punish">Наказание: 1 предупреждение</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">18.</span>
+                <span class="rule-text">Ваш ник в Discord должен совпадать с ником в SCP:SL.</span>
+            </div>
+            <div class="rule-note">Примечание: о смене ника необходимо заранее (за день) уведомить в специальном канале.</div>
+            <div class="rule-punish">Наказание: 1 предупреждение</div>
+        </div>
+
+        <div class="group-title">▸ Конфликт интересов</div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <span class="rule-num">19.</span>
+                <span class="rule-text">Запрещено быть администратором на другом проекте (конкурирующем или аналогичном).</span>
+            </div>
+            <div class="rule-punish">Наказание: снятие с должности вплоть до ЧС проекта (чёрного списка)</div>
+        </div>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== РАЗДЕЛ 5: МИНИ-ИВЕНТЫ ===== -->
+    <!-- ============================================================ -->
+    <div class="section" id="events">
+        <div class="section-title">Мини-ивенты</div>
+
+        <div class="info-box">
+            Все мини-ивенты описаны ниже. Для проведения мини-ивента требуется ранг <strong> Администратора</strong> и выше, а также знание и умение проводить ивенты.
+        </div>
+
+        <div class="event-grid">
+
+            <div class="event-card">
+                <span class="event-badge">Доступен</span>
+                <div class="event-name">Колесо фортуны</div>
+                <div class="event-desc">
+                    Раз в 3 минуты администратор крутит рандомайзер с числом 38. Выпавший номер означает номер выпавшего эффекта. Он выдаётся всем игрокам (не более чем на 20 секунд, все intensity 1 уровня).
+                    <ul>
+                        <li><strong>Запрещены эффекты:</strong> invisibility, spawn protection, ghostly, amnesia vision, corroding, pocket corroding, decontaminating, ensnared, flashed, hemorrhage, hypothermia, severed hands, cardiac arrest, strangled, silent walk</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <span class="event-badge required">Требуется 2 админа</span>
+                <div class="event-name">Таинственный торговец</div>
+                <div class="event-desc">
+                    В выбранной комнате появляется торговец (администратор) и остаётся в ней до конца раунда. Он обменивает предметы на монеты, а монеты на предметы (в невыгодную сторону, например аптечку он купит за 1 монету, а продаст за 2). Цены назначает сам торговец.
+                </div>
+                <div class="event-note"><strong>Примечание:</strong> проведение доступно при наличии 2 администраторов</div>
+            </div>
+
+            <div class="event-card">
+                <span class="event-badge">Доступен</span>
+                <div class="event-name">Сделка</div>
+                <div class="event-desc">
+                    Каждые 3 минуты администратор (демон) телепортируется к случайному игроку и даёт ему выбор:
+                    <ul>
+                        <li><strong>Богатство</strong> — даёт 10 HP и любой SCP-объект (кроме SCP-1344)</li>
+                        <li><strong>Здоровье</strong> — даёт 250 HP, но забирает весь огнестрел</li>
+                        <li><strong>Жертва</strong> — убивает человека, но взамен отнимает у любого SCP 250 HP</li>
+                        <li><strong>Власть</strong> — даёт SCP-1344 (только 1 раз за раунд)</li>
+                    </ul>
+                </div>
+                <div class="event-note"><strong>Примечание:</strong> SCP-1344 может быть выдан только 1 раз. Если уже был выдан — игрок получает пулемёт МОГ</div>
+            </div>
+
+            <div class="event-card">
+                <span class="event-badge required">Требуется 2-3 админа</span>
+                <div class="event-name">Лифт удачи</div>
+                <div class="event-desc">
+                    2-3 администратора спавнятся в лифтах на гейтах и в хард-зоне (049/173). Они могут появляться и исчезать.
+                    <ul>
+                        <li>Администратор даёт игроку выбор — орёл или решка</li>
+                        <li><strong>Выигрыш:</strong> игрок выбирает место для телепортации (запрещена лайт-зона и микро-хид)</li>
+                        <li><strong>Проигрыш:</strong> игрок умирает</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <span class="event-badge">Доступен</span>
+                <div class="event-name">Нет связи</div>
+                <div class="event-desc">
+                    Во всём комплексе отключается свет. Игрокам выдаётся хэллоуинская лампа. При каждом спавне МОГ или Повстанцев Хаоса им также выдаётся лампа.
+                </div>
+                <div class="event-note"><strong>Примечание:</strong> после взрыва боеголовки свет включается на улице во избежание задержки раунда</div>
+            </div>
+
+            <div class="event-card">
+                <span class="event-badge">Доступен</span>
+                <div class="event-name">Подрыватели</div>
+                <div class="event-desc">
+                    Случайному игроку каждые 2 минуты выдаётся розовая конфета через команду <code style="color:#a855f7;">[candy (id) pink]</code>.
+                </div>
+                <div class="event-note"><strong>Примечание:</strong> розовая конфета не может выдаваться более 2 раз подряд одному игроку</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== РАЗДЕЛ 6: ДОНАТ ===== -->
+    <!-- ============================================================ -->
+    <div class="section" id="donate">
+        <div class="section-title">Донат-привилегии</div>
+
+        <div class="info-box">
+            <strong>Внимание!</strong> Все донатные привилегии не нарушают VSR и выдаются только на сервере NoRules.
+        </div>
+
+        <div class="donate-grid">
+
+            <div class="donate-card">
+                <div class="donate-name">Junior</div>
+                <div class="donate-features">
+                    <ul>
+                        <li>Плашка "Junior" (зелёная) на игровом сервере</li>
+                        <li>Возможность выдавать вещи</li>
+                    </ul>
+                </div>
+                <div class="donate-prices">
+                    <span class="price-item">Навсегда — 400 ₽</span>
+                    <span class="price-item">Месяц — 100 ₽</span>
+                </div>
+            </div>
+
+            <div class="donate-card">
+                <div class="donate-name">Длань Змея</div>
+                <div class="donate-features">
+                    <ul>
+                        <li>Плашка "Длань Змея" (синяя) на игровом сервере</li>
+                        <li>Возможность выдавать вещи</li>
+                        <li>Возможность выдавать эффекты</li>
+                    </ul>
+                </div>
+                <div class="donate-prices">
+                    <span class="price-item">Навсегда — 600 ₽</span>
+                    <span class="price-item">Месяц — 150 ₽</span>
+                </div>
+            </div>
+
+            <div class="donate-card">
+                <div class="donate-name">Алый Молот</div>
+                <div class="donate-features">
+                    <ul>
+                        <li>Плашка "Алый Молот" (серая) на игровом сервере</li>
+                        <li>Доступ к админ-чату</li>
+                        <li>Возможность выдавать эффекты</li>
+                        <li>Доступ к выдаче вещей</li>
+                    </ul>
+                </div>
+                <div class="donate-note">! Роль не нарушает VSR!</div>
+                <div class="donate-prices">
+                    <span class="price-item">Навсегда — 850 ₽</span>
+                    <span class="price-item">Месяц — 250 ₽</span>
+                </div>
+            </div>
+
+            <div class="donate-card">
+                <div class="donate-name">Командир Гок</div>
+                <div class="donate-features">
+                    <ul>
+                        <li>Плашка "Командир Гок" (тёмно-синяя) на игровом сервере</li>
+                        <li>Доступ к админ-чату</li>
+                        <li>Возможность выдавать эффекты</li>
+                        <li>Доступ к выдаче вещей</li>
+                        <li>На ивентах — выбор любой роли МОГа</li>
+                        <li>Возможность изменить класс</li>
+                    </ul>
+                </div>
+                <div class="donate-note">! Роль не нарушает VSR!</div>
+                <div class="donate-prices">
+                    <span class="price-item">Навсегда — 1000 ₽</span>
+                    <span class="price-item">Месяц — 300 ₽</span>
+                </div>
+            </div>
+
+            <div class="donate-card">
+                <div class="donate-name">Фактотум</div>
+                <div class="donate-features">
+                    <ul>
+                        <li>Плашка "Фактотум" (тёмно-синяя) на игровом сервере</li>
+                        <li>Доступ к админ-чату</li>
+                        <li>Возможность выдавать эффекты</li>
+                        <li>Доступ к выдаче вещей</li>
+                        <li>На ивентах — выбор любой роли</li>
+                        <li>Возможность перейти в режим наблюдателя</li>
+                        <li>Возможность изменить себе класс на любой</li>
+                    </ul>
+                </div>
+                <div class="donate-note">! Роль не нарушает VSR!</div>
+                <div class="donate-prices">
+                    <span class="price-item">Навсегда — 2000 ₽</span>
+                    <span class="price-item">Месяц — 325 ₽</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ===== ПРЕФИКСЫ ===== -->
+        <div class="info-box" style="margin-top: 1.5rem;">
+            <strong>Именной префикс</strong> — вы получаете на сервере именной префикс (справа от никнейма в списке игроков, рядом с вашим именем в игре).
+        </div>
+
+        <div class="prefix-grid">
+            <div class="prefix-item">
+                <div class="prefix-name">Обычный префикс</div>
+                <div class="prefix-price">Навсегда — 500 ₽</div>
+                <div class="prefix-price">Месяц — 160 ₽</div>
+            </div>
+            <div class="prefix-item">
+                <div class="prefix-name">Переливающийся префикс</div>
+                <div class="prefix-price">Навсегда — 600 ₽</div>
+                <div class="prefix-price">Месяц — 200 ₽</div>
+            </div>
+        </div>
+
+        <!-- ===== ПРАВИЛА ИСПОЛЬЗОВАНИЯ ===== -->
+        <div style="margin-top: 1.5rem;">
+            <div class="group-title">▸ Правила использования доната</div>
+        </div>
+
+        <div class="rules-donate-grid">
+
+            <div class="rules-donate-item">
+                <span class="rule-num">●</span>
+                <span class="rule-text">Изменять роль можно только себе или своему другу (1 раз за раунд)</span>
+                <div class="rule-sub">— Фактотум может изменять 3 раза за раунд</div>
+                <div class="rule-sub">— Командир Гок может изменять 2 раза за раунд</div>
+                <div class="rule-sub">— Сменить роль другу можно только в том случае, если вы меняете роль вместе</div>
+            </div>
+
+            <div class="rules-donate-item">
+                <span class="rule-num">●</span>
+                <span class="rule-text">За SCP можно выступить только в первую минуту раунда</span>
+                <div class="rule-sub">— Нельзя выступить за уже имеющегося SCP</div>
+                <div class="rule-sub">— Нужно перейти в спектаторы и только после этого менять роль</div>
+            </div>
+
+            <div class="rules-donate-item">
+                <span class="rule-num">●</span>
+                <span class="rule-text">За SCP-3114 можно выступить при соблюдении условий</span>
+                <div class="rule-sub">— Соблюдение правил доната</div>
+                <div class="rule-sub">— Один скелет в одном раунде</div>
+                <div class="rule-sub">— Разрешение от администратора и выше</div>
+            </div>
+
+            <div class="rules-donate-item">
+                <span class="rule-num">●</span>
+                <span class="rule-text">Изменение роли — ограничения</span>
+                <div class="rule-sub">— Только в спектаторах (исключение — начало раунда)</div>
+                <div class="rule-sub">— Только через 4 минуты после начала раунда</div>
+                <div class="rule-sub">— После смерти — подождать минимум 1 минуту</div>
+                <div class="rule-sub">— Нельзя во время или после взрыва боеголовки</div>
+            </div>
+
+            <div class="rules-donate-item">
+                <span class="rule-num">●</span>
+                <span class="rule-text">Выдавать эффекты можно только себе</span>
+                <div class="rule-sub">— Только один раз за раунд</div>
+                <div class="rule-sub">— Запрещены: invisibility, damage reduction, bodyshot reduction, movement speed</div>
+                <div class="rule-sub">— Нужна консультация с администратором</div>
+                <div class="rule-sub">— Запрещено выдавать эффекты, мешающие игровому процессу</div>
+            </div>
+
+            <div class="rules-donate-item">
+                <span class="rule-num">●</span>
+                <span class="rule-text">Выдача вещей</span>
+                <div class="rule-sub">— Командир Гок — до 8 вещей за раунд</div>
+                <div class="rule-sub">— Запрещены: микро-хид, карта 05, электро-палка, плазмаган, SCP-1344</div>
+                <div class="rule-sub">— Ком-45 и SCP-объекты можно выдавать (кроме SCP-1344)</div>
+                <div class="rule-sub">— Каждый SCP можно выдавать только 2 раза за раунд (SCP-207 — 3 раза)</div>
+                <div class="rule-sub">— Патроны — без ограничений (сколько можете унести)</div>
+            </div>
+
+            <div class="rules-donate-item">
+                <span class="rule-num">●</span>
+                <span class="rule-text">Запрещено мешать администрации</span>
+                <div class="rule-sub">— Примеры: спавн за обучение и т.п.</div>
+            </div>
+
+        </div>
+
+        <!-- ===== ССЫЛКА НА DISCORD ===== -->
+        <div style="margin-top: 1.5rem; text-align: center; background: #1a1235; border-radius: 8px; padding: 1.2rem 1.5rem; border: 1px solid #3a2a6b;">
+            <div style="color: #d0c4ea; font-size: 1rem; margin-bottom: 0.8rem;">
+                💬 Приобрести донат можно на нашем <strong style="color: #c084fc;">Discord-сервере</strong>
+            </div>
+            <a href="https://discord.gg/Tvzd4MKdB" class="discord-link">💬 Перейти на Discord-сервер</a>
+            <div style="color: #5a4a7a; font-size: 0.75rem; margin-top: 0.3rem;">
+                discord.gg/Tvzd4MKdB
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== РАЗДЕЛ 7: СОСТАВ ===== -->
+    <!-- ============================================================ -->
+    <div class="section" id="staff">
+        <div class="section-title">Состав администрации</div>
+
+        <div class="info-box">
+            Актуальные данные о составе администрации. Нажмите на кнопку ниже, чтобы открыть полную таблицу.
+        </div>
+
+        <div style="text-align: center; margin: 1.5rem 0;">
+            <a href="https://docs.google.com/spreadsheets/d/18pR2LiLUsGVB_m_P0RAx2b5DfoT_0rt8OodPg6Hurl4/edit?gid=0#gid=0" target="_blank" style="display:inline-block; background:#7c3aed; color:#fff; padding:0.8rem 2.5rem; border-radius:40px; text-decoration:none; font-weight:700; font-size:1.1rem; transition:background 0.2s;">📊 Открыть таблицу состава</a>
+            <div style="color: #5a4a7a; font-size: 0.75rem; margin-top: 0.3rem;">
+                Google Таблица · Откроется в новой вкладке
+            </div>
+        </div>
+
+        <div style="color: #5a4a7a; font-size: 0.8rem; text-align: center; margin-top: 0.8rem;">
+            * Данные обновляются в Google Таблице
+        </div>
+    </div>
+
+    <!-- ===== ПОДВАЛ ===== -->
+    <div class="footer">
+        <div style="font-weight: 600; color: #7c6ca0; letter-spacing: 1px;">KL|NoRules</div>
+        <div style="margin-top: 0.2rem;">Брифинг администрации</div>
+        <div style="margin-top: 0.5rem;">
+            <a href="#top">↑ Наверх</a>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
